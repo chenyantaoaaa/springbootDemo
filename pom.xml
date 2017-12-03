@@ -19,9 +19,16 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!--外部tomcat部署的时候注意排掉自带tomcat-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.mybatis.spring.boot</groupId>
@@ -45,14 +52,31 @@
       <artifactId>HikariCP</artifactId>
     </dependency>
 
+    <!--jsp页面使用jstl标签-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>taglibs</groupId>
+      <artifactId>standard</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <!--用于编译jsp-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.tomcat.embed</groupId>-->
+      <!--<artifactId>tomcat-embed-jasper</artifactId>-->
+      <!--<scope>provided</scope>-->
+    <!--</dependency>-->
+
   </dependencies>
   <build>
     <finalName>springbootDemo</finalName>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
   </build>
 </project>
